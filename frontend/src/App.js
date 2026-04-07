@@ -271,8 +271,8 @@ const HeroSection = () => {
           </div>
           <div className="hidden md:block">
             <img 
-              src="https://images.unsplash.com/photo-1680209082188-33ba76557259?w=800&q=85" 
-              alt="Indigenous craft" 
+              src="https://customer-assets.emergentagent.com/job_earth-commerce-2/artifacts/vu81syzr_gothra.jpeg" 
+              alt="GOTHRA - Indigenous Jute Craft" 
               className="w-full h-[400px] object-cover"
             />
           </div>
