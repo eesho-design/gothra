@@ -55,12 +55,12 @@
     "tailwind-merge": "^3.2.0",
     "sonner": "^2.0.3",
     "recharts": "^3.6.0",
-    "@craco/craco": "^7.1.0"
+    "@craco/craco": "^7.1.0",
   },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
   },
   "browserslist": {
     "production": [
