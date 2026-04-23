@@ -104,7 +104,7 @@ const Header = () => {
   const { cart } = useCart();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const itemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
+  const itemCount = (cart.items || []).reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -339,7 +339,7 @@ const JuteCurtainsSection = () => {
     const fetchCurtains = async () => {
       try {
         const response = await axios.get(`${API}/products?category=home-decor`);
-        setCurtains(response.data.filter(p => p.subcategory === 'jute-curtains'));
+        setCurtains((e.data || []).filter(p => p.subcategory === 'jute-curtains'));
       } catch (e) {
         console.error("Failed to fetch curtains:", e);
       }
@@ -384,7 +384,7 @@ const PlantersSection = () => {
     const fetchPlanters = async () => {
       try {
         const response = await axios.get(`${API}/products?category=home-decor`);
-        setPlanters(response.data.filter(p => p.subcategory === 'planters'));
+        setPlanters((e.data || []).filter(p => p.subcategory === 'planters'));
       } catch (e) {
         console.error("Failed to fetch planters:", e);
       }
