@@ -168,6 +168,7 @@ const CartProvider = ({ children }) => {
         prefill: {
           name: customerName || "",
           email: customerEmail || "",
+          contact: customerPhone || "",
         },
         theme: { color: "#1E3F33" },
         handler: async function (response) {
@@ -1332,6 +1333,7 @@ const AdminDashboard = () => {
                       <td className="px-5 py-4">
                         <div className="text-[#1A2421]">{order.customer_name || "Guest"}</div>
                         <div className="text-xs text-[#4A5D54]">{order.customer_email || "—"}</div>
+                        {order.customer_phone && <div className="text-xs text-[#4A5D54]/75 mt-0.5">{order.customer_phone}</div>}
                       </td>
                       <td className="px-5 py-4 text-[#4A5D54]">
                         {(order.items || []).map(i => i.name).join(", ").substring(0, 40) || "—"}

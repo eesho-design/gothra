@@ -321,7 +321,7 @@ function calculateCartTotalsFromItems(itemsInput) {
 
 
 // Helper: send order notification emails
-async function sendOwnerNotification(orderId, items, total, customerEmail, customerName) {
+async function sendOwnerNotification(orderId, items, total, customerEmail, customerName, customerPhone) {
   const senderEmail = process.env.SENDER_EMAIL || 'onboarding@resend.dev';
   const storeEmail = process.env.STORE_EMAIL || '7gothra@gmail.com';
   try {
@@ -341,6 +341,7 @@ async function sendOwnerNotification(orderId, items, total, customerEmail, custo
       <div style="padding:24px;background:#FAF8F5;">
         <p style="color:#1A2421;font-size:16px;margin-bottom:4px;"><strong>Order ID:</strong> ${orderId}</p>
         <p style="color:#4A5D54;font-size:14px;margin-bottom:4px;"><strong>Customer:</strong> ${customerName || 'Guest'}</p>
+        <p style="color:#4A5D54;font-size:14px;margin-bottom:4px;"><strong>Phone:</strong> ${customerPhone || 'Not provided'}</p>
         <p style="color:#4A5D54;font-size:14px;margin-bottom:16px;"><strong>Email:</strong> ${customerEmail || 'Not provided'}</p>
         <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:8px;">
           <thead><tr style="background:#F3EBE1;">
@@ -420,9 +421,10 @@ async function triggerOrderEmails(db, transaction, idField, idValue) {
   const total = transaction.amount || 0;
   const customerEmail = transaction.customer_email || "";
   const customerName = transaction.customer_name || "";
+  const customerPhone = transaction.customer_phone || "";
   
   // Fire-and-forget email sends
-  sendOwnerNotification(orderId, items, total, customerEmail, customerName);
+  sendOwnerNotification(orderId, items, total, customerEmail, customerName, customerPhone);
   sendCustomerConfirmation(customerEmail, customerName, orderId, items, total);
   
   await db.collection('payment_transactions').updateOne({ [idField]: idValue }, { $set: { email_sent: true } });
