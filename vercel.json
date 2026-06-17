@@ -1,7 +1,23 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/backend/$1" },
-    { "source": "/(.*)", "destination": "/frontend/$1" }
-  ]
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/$1"
+    }
+  ],
+  "experimentalServices": {
+    "frontend": {
+      "routePrefix": "/"
+    },
+    "backend": {
+      "root": "backend",
+      "entrypoint": "server:app",
+      "routePrefix": "/_/backend"
+    }
+  }
 }

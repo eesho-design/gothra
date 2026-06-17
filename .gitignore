@@ -88,3 +88,10 @@ credentials.json
 *.pem
 *.key
 .credentials
+
+.vercel
+
+# Local Netlify folder
+.netlify
+
+.env*
