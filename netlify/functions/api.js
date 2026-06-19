@@ -855,3 +855,5 @@ app.use('/', router);
 
 // Wrap app in serverless handler for Netlify Lambda
 module.exports.handler = serverless(app);
+module.exports.app = app;
+
