@@ -840,6 +840,11 @@ router.get('/admin/stats', async (req, res) => {
   }
 });
 
+router.post('/log-error', (req, res) => {
+  console.error('[CLIENT_ERROR]', JSON.stringify(req.body, null, 2));
+  res.json({ received: true });
+});
+
 router.get('/', (req, res) => {
   res.json({ message: 'GOTHRA API - Organic & Indigenous Products' });
 });
