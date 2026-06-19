@@ -235,7 +235,7 @@ const CartProvider = ({ children }) => {
         alert(`Payment failed: ${response.error.description}`);
         toast.error(`Payment failed: ${response.error.description}`);
       });
-      rzp.open();
+      document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true})); setTimeout(()=>{rzp.open();},400);
       // Instantly reset loading state after successful modal open
       // to prevent the payment button from getting stuck.
       setIsLoading(false);
